@@ -2,6 +2,8 @@ module github.com/kpfaulkner/jxl-go-examples
 
 go 1.22.2
 
+replace github.com/kpfaulkner/jxl-go => ../jxl-go
+
 require (
 	github.com/kpfaulkner/jxl-go v0.0.0-20241123230351-60f0f1a4b381
 	github.com/sirupsen/logrus v1.9.3
