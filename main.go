@@ -21,10 +21,11 @@ func main() {
 	//defer profile.Start(profile.MemProfileHeap, profile.MemProfileRate(1), profile.ProfilePath(`.`)).Stop()
 	//defer profile.Start(profile.MemProfileAllocs, profile.MemProfileRate(1), profile.ProfilePath(`.`)).Stop()
 
-	file := `../testdata/lossless.jxl`
+	//file := `../testdata/lossless.jxl`
 	//file := `../testdata/lenna.jxl`
 	//file := `c:\temp\work.jxl`
 	//file := `c:\temp\ken-0-3.jxl`
+	file := `c:\temp\Rec2020.jxl`
 	//file := `c:\temp\ken-0-0.jxl`
 
 	// church fails with nested distribution.
@@ -50,11 +51,12 @@ func main() {
 	fmt.Printf("Num extra channels (inc alpha) %d\n", jxlImage.NumExtraChannels())
 
 	// convert to regular Go image.Image
-	img, err := jxlImage.ToImage()
+	//img, err := jxlImage.ToImage()
+	img, err := jxlImage.ChannelToImage(4)
 	if err != nil {
 		fmt.Printf("error when making image %v\n", err)
+		return
 	}
-
 	buf := new(bytes.Buffer)
 	if err := png.Encode(buf, img); err != nil {
 		log.Fatalf("boomage %v", err)
